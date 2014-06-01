@@ -2,8 +2,28 @@
 <p>Find me in app/views/player/overview.html.erb</p>
 
 
-<%= @matches.each do |match| %>
+    <% @matches.each do |match| %>
+                <%= match[:id] %>
+                <%= match[:start] %>
+                <%= match[:lobby] %>
+                <br>
+                The Radiant
+                <br>
+                <% match[:radiant].each do |player| %>
+                    player id: <%= player['account_id'] %> 
+                    hero id:<%= player['hero_id'] %> 
+                    player slot:<%= player['player_slot'] %><br>
+                    <%= player['item_0']
+                <% end %>
+                <br>
 
-    <%= match.id %> 
-    <br><br>
-<% end %>
+                The Dire
+                <br>
+                <%  match[:dire].each do |player| %>
+                    player id: <%= player['account_id'] %><br>
+                    hero id:<%= player['hero_id'] %><br>
+                    player slot:<%= player['player_slot'] %><br>
+                <% end %>
+
+        <br><br>
+    <% end %>

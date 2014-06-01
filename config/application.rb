@@ -25,5 +25,7 @@ module Dota2Stats
     Dota.configure do |config|
         config.api_key = STEAM_API_KEY
     end
+
+    STEAM_MATCH_URL = 'https://api.steampowered.com/IDOTA2Match_570/GetMatchHistory/V001/?key=' + STEAM_API_KEY
   end
 end
