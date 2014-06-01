@@ -4,7 +4,7 @@ require 'uri'
 
 class PlayerController < ApplicationController
   def overview
-    player_id = params[:player_id]
+    @player_id = params[:player_id]
     uri = Dota2Stats::Application::STEAM_MATCH_URL #+ '&account_id=' + player_id
     uri = URI.parse(uri)
 
@@ -17,8 +17,8 @@ class PlayerController < ApplicationController
     matches.each do |match|
         m = {
             :id => match['match_id'],
-            :start => match['start'],
-            :lobby => match['lobby'],
+            :start => match['start_time'],
+            :lobby => match['lobby_type'],
             :radiant => [],
             :dire => []
         }
