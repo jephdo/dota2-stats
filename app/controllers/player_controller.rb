@@ -9,7 +9,6 @@ class PlayerController < ApplicationController
     uri = URI.parse(uri)
 
     response = Net::HTTP.get_response(uri)
-
     matches = JSON.parse(response.body)['result']['matches']
 
     @matches = []
@@ -34,5 +33,4 @@ class PlayerController < ApplicationController
         @matches.push(m)
     end
   end
-
 end

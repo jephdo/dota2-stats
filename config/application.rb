@@ -27,5 +27,6 @@ module Dota2Stats
     end
 
     STEAM_MATCH_URL = 'https://api.steampowered.com/IDOTA2Match_570/GetMatchHistory/V001/?key=' + STEAM_API_KEY
+    STEAM_MATCH_DETAIL = 'https://api.steampowered.com/IDOTA2Match_570/GetMatchDetails/V001/?key=' + STEAM_API_KEY
   end
 end
