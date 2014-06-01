@@ -1,0 +1,5 @@
+
+# http://stackoverflow.com/questions/2542353/what-is-a-good-gitignore-to-use-with-rails-on-heroku
+db/*.sqlite3
+log/*.log
+tmp/**/*
