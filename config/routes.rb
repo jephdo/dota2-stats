@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get 'player/:player_id' => 'player#overview'
+  get 'player/:player_id' => 'player#recent'
 
   get 'matches/overview'
 

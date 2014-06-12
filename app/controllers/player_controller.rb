@@ -3,7 +3,7 @@ require 'net/http'
 require 'uri'
 
 class PlayerController < ApplicationController
-  def overview
+  def recent
     @player_id = params[:player_id]
     uri = Dota2Stats::Application::STEAM_MATCH_URL #+ '&account_id=' + player_id
     uri = URI.parse(uri)
