@@ -1,0 +1,50 @@
+<h1>Matches#detail</h1>
+<p>Find me in app/views/matches/detail.html.erb</p>
+
+<table class="table table-bordered">
+<tr>
+    <td colspan="11">The Radiant</td>
+</tr>
+<tr>
+    <th>Player</th>
+    <th>Hero</th>
+    <th>Items</th>
+    <th>KDA</th>
+    <th>Last Hits/Denies</th>
+    <th>Gold/min</th>
+    <th>XP/min</th>
+    <th>Gold spent</th>
+    <th>Hero damage</th>
+    <th>Tower damage</th>
+    <th>Hero healing</th>
+</tr>
+<% @players.each do |player| %>
+	<tr>
+		<td> <%= player['account_id'] %> </td> <!-- Player -->
+		<td> <%= player['hero_id'] %> (Level <%= player['level'] %>) </td> <!-- Hero (Level #) -->
+		<td>
+			<%= player['item_0'] %>
+			<%= player['item_1'] %>
+			<%= player['item_2'] %>
+			<%= player['item_3'] %>
+			<%= player['item_4'] %>
+			<%= player['item_5'] %>
+			<%= player['item_6'] %>
+		</td> <!-- Items -->
+		<td>
+			<%= player['kills'] %>/<%= player['deaths'] %>/<%= player['assists'] %>
+		</td> <!-- K/D/A -->
+		<td>
+			<%= player['last_hits'] %>/<%= player['denies'] %>
+		</td> <!-- Last Hits/Denies -->
+		<td><%= player['gold_per_min'] %></td> <!-- Gold/min -->
+		<td><%= player['xp_per_min'] %></td> <!-- XP/min -->
+		<td><%= player['item_0'] %></td> <!-- Gold spent -->
+		<td><%= player['hero_damage'] %></td> <!-- Hero damage -->
+		<td><%= player['tower_damage'] %></td> <!-- Tower damage -->
+		<td><%= player['hero_healing'] %></td> <!-- Hero healing -->
+	</tr>
+<% end %>
+</table>
+
+<%= @players[0] %>
