@@ -11,7 +11,7 @@ class PlayerController < ApplicationController
     puts @player_id
     puts params
     uri = Dota2Stats::Application::STEAM_MATCH_URL #+ '&account_id=' + player_id
-    uri = uri + '&account_id=' + @player_id
+    uri = uri + '&matches_requested=5&account_id=' + @player_id
     uri = URI.parse(uri)
 
     puts uri
