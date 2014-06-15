@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   root :to => 'player#index'
 
+  get 'player/' => 'player#recent'
+
   get 'player/:player_id' => 'player#recent'
 
   get 'matches/overview'
