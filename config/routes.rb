@@ -1,12 +1,13 @@
 Rails.application.routes.draw do
   root :to => 'player#index'
-  
+
   get 'player/:player_id' => 'player#recent'
 
   get 'matches/overview'
 
   get 'matches/detail'
 
+  get 'match/:match_id' => 'matches#detail'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

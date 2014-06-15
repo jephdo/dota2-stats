@@ -5,8 +5,8 @@
 
 
     <% @matches.each do |match| %>
-    <a href="#">match[:id]</a>
-    <h3>Match <strong><%= match[:id] %></strong></h3> 
+
+    <h3>Match <strong><a href="/match/<%= match[:id] %>"><%= match[:id] %></a></strong></h3> 
         <span style="color:gray"><i><%= distance_of_time_in_words_to_now(Time.at(match[:start].to_i)) %> ago</i></span>
         <table class="table table-bordered">
             <tr>
@@ -20,7 +20,13 @@
             <% match[:radiant].each do |player| %>
                 <tr>
                     <td><%= lookup_player_color(player['player_slot']) %></td>
-                    <td><%= player['account_id'] %></td>
+                    <td>
+                        <% if player['account_id'] == 4294967295 %>
+                            Anonymous Player
+                        <% else %>
+                            <a href="/player/<%= player['account_id'] %>"><%= player['account_id'] %></a>
+                        <% end %>
+                    </td>
                     <td><%= lookup_hero_name(player['hero_id']) %> </td>
                 </tr>
             <% end %>
@@ -37,7 +43,13 @@
             <% match[:dire].each do |player| %>
                 <tr>
                     <td><%= lookup_player_color(player['player_slot']) %></td>
-                    <td><%= player['account_id'] %></td>
+                    <td>
+                        <% if player['account_id'] == 4294967295 %>
+                            Anonymous Player
+                        <% else %>
+                            <a href="/player/<%= player['account_id'] %>"><%= player['account_id'] %></a>
+                        <% end %>
+                    </td>
                     <td><%= lookup_hero_name(player['hero_id']) %> </td>
                 </tr>
             <% end %>
