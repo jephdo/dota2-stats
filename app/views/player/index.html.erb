@@ -2,10 +2,17 @@
 
     <p>Enter a valid Steam ID to look up recent match statistics:</p>
 
-<form role="search" method="get" action="/player/">
-        <div class="form-group">
-          <input type="text" class="form-control" name="player_id" placeholder="Enter player ID...">
+          <input id="input" type="text" class="form-control" name="player_id" placeholder="Enter player ID...">
         </div>
-        <button type="submit" class="btn btn-default">Search</button>
-      </form>
+        <br>
+      <button id="search" class="btn btn-default" onclick="route()">Search</button>
 </div>
+
+<script type="text/javascript">
+
+function route() {
+	var input = document.getElementById('input').value;
+	window.location.replace('player/?player_id=' + input);
+}
+
+</script> 
