@@ -1,7 +1,11 @@
 <div>
 
     <h1>Five Most Recent Matches</h1>
-    <p>Player <%= @player_id %></p>
+    <% if not @player_id %>
+        <p>played on Steam</p>
+    <% else %>
+    <p>for player <%= @player_id %></p>
+    <% end %>
 
 
     <% @matches.each do |match| %>

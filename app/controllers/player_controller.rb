@@ -10,9 +10,17 @@ class PlayerController < ApplicationController
     @player_id = params[:player_id]
     uri = Dota2Stats::Application::STEAM_MATCH_URL #+ '&account_id=' + player_id
     uri = uri + '&matches_requested=5'
-    
+
+
+    if not @player_id == @player_id.to_i.to_s and not @player_id.nil?
+      raise ActionController::RoutingError.new('Player ID must be an integer.')
+    end
+
     if @player_id
         uri = uri + '&account_id=' + @player_id
+        @player_id = @player_id.to_i
+    else
+      @player_id = nil
     end
 
     uri = URI.parse(uri)

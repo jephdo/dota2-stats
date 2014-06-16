@@ -64,7 +64,7 @@
             </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-              <li class="dropdown pull-right open">
+              <li class="dropdown pull-right">
         <a class="dropdown-toggle" id="about" data-toggle="dropdown" href="#">About <b class="caret"></b></a>
 
         <ul class="dropdown-menu" role="menu" aria-labelledby="about" id="toggleList">
@@ -80,6 +80,9 @@
               <li>For convenience check out the Favorite Players dropdown for some players to click on if you don't have a player ID ready</li>
             
               <li>Invalid player ID's will raise a 404</li>
+
+              <li>An API key is already provided in `config/application.rb`.</li>
+              <li>The Steam API limits one API call per second.Do not request more than one page per second.</li>
 
             </ul>
           </div>
