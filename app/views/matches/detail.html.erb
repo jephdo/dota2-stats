@@ -1,6 +1,13 @@
-<h1>Matches#detail</h1>
-<p>Find me in app/views/matches/detail.html.erb</p>
 
+<h3>Match <strong><a href="/match/<%= @match_id %>"><%= @match_id %></a></strong></h3> 
+<h4>Score:
+    <span style="color: green;"><b><%= @radiant_score %></b></span>-<span style="color:red;"><b><%= @dire_score %></b></span>
+</h4>
+<% if @radiant_win %>
+<h4 style="color:green;">Radiant Win</h4>
+<% else %>
+<h4 style="color:red;">Dire Win</h4>
+<% end %>
 <table class="table table-bordered">
 <tr>
     <td colspan="11">The Radiant</td>
@@ -8,7 +15,8 @@
 <tr>
     <th>Player</th>
     <th>Hero</th>
-    <th>Items</th>
+    <th>Level</th>
+    <!-- <th>Items</th> -->
     <th>KDA</th>
     <th>Last Hits/Denies</th>
     <th>Gold/min</th>
@@ -18,19 +26,16 @@
     <th>Tower damage</th>
     <th>Hero healing</th>
 </tr>
-<% @players.each do |player| %>
+<% @players[0..4].each do |player| %>
 	<tr>
-		<td> <%= player['account_id'] %> </td> <!-- Player -->
-		<td> <%= player['hero_id'] %> (Level <%= player['level'] %>) </td> <!-- Hero (Level #) -->
-		<td>
-			<%= player['item_0'] %>
-			<%= player['item_1'] %>
-			<%= player['item_2'] %>
-			<%= player['item_3'] %>
-			<%= player['item_4'] %>
-			<%= player['item_5'] %>
-			<%= player['item_6'] %>
-		</td> <!-- Items -->
+            <% if player['account_id'] == 4294967295 %>
+                <td>Anonymous Player</td>
+            <% else %>
+            <td><a href="/player/<%= player['account_id'] %>"><%= player['account_id'] %></a></td> <!-- Player -->
+            <% end %>
+		<td> <%= lookup_hero_name(player['hero_id']) %></td> <!-- Hero (Level #) -->
+		<td><%= player['level'] %></td>
+
 		<td>
 			<%= player['kills'] %>/<%= player['deaths'] %>/<%= player['assists'] %>
 		</td> <!-- K/D/A -->
@@ -47,4 +52,47 @@
 <% end %>
 </table>
 
-<%= @players[0] %>
+
+<table class="table table-bordered">
+<tr>
+    <td colspan="11">The Dire</td>
+</tr>
+<tr>
+    <th>Player</th>
+    <th>Hero</th>
+    <th>Level</th>
+    <!-- <th>Items</th> -->
+    <th>KDA</th>
+    <th>Last Hits/Denies</th>
+    <th>Gold/min</th>
+    <th>XP/min</th>
+    <th>Gold spent</th>
+    <th>Hero damage</th>
+    <th>Tower damage</th>
+    <th>Hero healing</th>
+</tr>
+<% @players[5..9].each do |player| %>
+    <tr>
+            <% if player['account_id'] == 4294967295 %>
+                <td>Anonymous Player</td>
+            <% else %>
+            <td><a href="/player/<%= player['account_id'] %>"><%= player['account_id'] %></a></td> <!-- Player -->
+            <% end %>
+        <td> <%= lookup_hero_name(player['hero_id']) %></td> <!-- Hero (Level #) -->
+        <td><%= player['level'] %></td>
+
+        <td>
+            <%= player['kills'] %>/<%= player['deaths'] %>/<%= player['assists'] %>
+        </td> <!-- K/D/A -->
+        <td>
+            <%= player['last_hits'] %>/<%= player['denies'] %>
+        </td> <!-- Last Hits/Denies -->
+        <td><%= player['gold_per_min'] %></td> <!-- Gold/min -->
+        <td><%= player['xp_per_min'] %></td> <!-- XP/min -->
+        <td><%= player['item_0'] %></td> <!-- Gold spent -->
+        <td><%= player['hero_damage'] %></td> <!-- Hero damage -->
+        <td><%= player['tower_damage'] %></td> <!-- Tower damage -->
+        <td><%= player['hero_healing'] %></td> <!-- Hero healing -->
+    </tr>
+<% end %>
+</table>
